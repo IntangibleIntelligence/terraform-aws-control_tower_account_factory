@@ -229,7 +229,8 @@ variable "gitlab_selfmanaged_url" {
 variable "account_request_repo_name" {
   description = "Repository name for the account request files. For non-CodeCommit repos, name should be in the format of Org/Repo"
   type        = string
-  default     = "aft-account-request"
+  #default     = "aft-account-request"
+  default      = "terraform-aft-account-requests" // changed to match my repo name, it is a new created repo
   validation {
     condition     = length(var.account_request_repo_name) > 0
     error_message = "Variable var: account_request_repo_name cannot be empty."
