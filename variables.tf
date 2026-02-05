@@ -209,7 +209,7 @@ variable "aft_feature_delete_default_vpcs_enabled" {
 variable "vcs_provider" {
   description = "Customer VCS Provider - valid inputs are codecommit, bitbucket, github, githubenterprise, gitlab, or gitLab self-managed"
   type        = string
-  default     = "codecommit"
+  default     = "github"
   validation {
     condition     = contains(["codecommit", "bitbucket", "github", "githubenterprise", "gitlab", "gitlabselfmanaged", "azuredevops"], var.vcs_provider)
     error_message = "Valid values for var: vcs_provider are (codecommit, bitbucket, github, githubenterprise, gitlab, gitlabselfmanaged, azuredevops)."
@@ -230,7 +230,7 @@ variable "account_request_repo_name" {
   description = "Repository name for the account request files. For non-CodeCommit repos, name should be in the format of Org/Repo"
   type        = string
   #default     = "aft-account-request"
-  default      = "terraform-aft-account-requests" // changed to match my repo name, it is a new created repo
+  default      = "IntangibleIntelligence/terraform-aft-account-requests" // changed to match my repo name, it is a new created repo
   validation {
     condition     = length(var.account_request_repo_name) > 0
     error_message = "Variable var: account_request_repo_name cannot be empty."
@@ -250,7 +250,7 @@ variable "account_request_repo_branch" {
 variable "global_customizations_repo_name" {
   description = "Repository name for the global customization files. For non-CodeCommit repos, name should be in the format of Org/Repo"
   type        = string
-  default     = "aft-global-customizations"
+  default     = "IntangibleIntelligence/aft-global-customizations"
   validation {
     condition     = length(var.global_customizations_repo_name) > 0
     error_message = "Variable var: global_customizations_repo_name cannot be empty."
@@ -270,7 +270,7 @@ variable "global_customizations_repo_branch" {
 variable "account_customizations_repo_name" {
   description = "Repository name for the account customizations files. For non-CodeCommit repos, name should be in the format of Org/Repo"
   type        = string
-  default     = "aft-account-customizations"
+  default     = "IntangibleIntelligence/aft-account-customizations"
   validation {
     condition     = length(var.account_customizations_repo_name) > 0
     error_message = "Variable var: account_customizations_repo_name cannot be empty."
