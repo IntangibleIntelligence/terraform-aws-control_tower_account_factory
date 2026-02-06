@@ -21,3 +21,27 @@ data "aws_service" "home_region_validation" {
 
 data "aws_partition" "current" {
 }
+
+
+
+# added for trouble shoot
+
+data "aws_caller_identity" "current" {}
+
+output "tfc_caller_arn" {
+  value = data.aws_caller_identity.current.arn
+}
+
+output "tfc_account_id" {
+  value = data.aws_caller_identity.current.account_id
+}
+
+#Run a plan/apply in TFC and read the output.
+
+#This ARN is the identity Terraform is using inside that workspace (i.e., the role/session that actually executed AWS API calls).
+
+#If it shows arn:aws:sts::032104382159:assumed-role/<RoleName>/<session> → that <RoleName> is what TFC is effectively using in the AFT management account.
+
+#If it shows a role in a different account → you’re not actually running in the AFT management account context; you’re assuming into it (or failing to).
+
+#This is the most deterministic check.
