@@ -24,6 +24,7 @@ provider "aws" {
 provider "aws" {
   alias  = "tf_backend_secondary_region"
   region = var.tf_backend_secondary_region
+  # That’s why you won’t see AWSAFTAdmin created automatically: your deployment path is using Control Tower’s execution role as the cross-account admin mechanism.
   assume_role {
     role_arn     = "arn:${data.aws_partition.current.partition}:iam::${var.aft_management_account_id}:role/AWSControlTowerExecution"
     session_name = local.aft_session_name
